@@ -71,7 +71,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Calculator.sol": "Calculator"
+			"Learning-Solidity/contracts/Calculator.sol": "Calculator"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -85,7 +85,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Calculator.sol": {
+		"Learning-Solidity/contracts/Calculator.sol": {
 			"keccak256": "0x827773afa346b3623393fadd938da4015ef4a1747dd77a4b93f950edb0f5479c",
 			"license": "MIT",
 			"urls": [
