@@ -5,6 +5,8 @@
 
  contract Twitter {
 
+    uint16 constant MAX_tWEET_LENGTH = 280;
+
     // definir el struct
     struct Tweet {
         address author;
@@ -28,6 +30,8 @@
         tweets[msg.sender] = _tweet;: Guarda el tweet en el mapping, 
         asociando el mensaje con la dirección del usuario.
         */
+
+        require(bytes(_tweet).length <= MAX_tWEET_LENGTH, "Tweet is too long");
 
         // instanciar un Tweet
         Tweet memory newTweet = Tweet({
