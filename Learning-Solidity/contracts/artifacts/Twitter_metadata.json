@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.29+commit.ab55807c"
+		"version": "0.8.26+commit.8a97fa7a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -30,6 +30,11 @@
 				"outputs": [
 					{
 						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
 							{
 								"internalType": "address",
 								"name": "author",
@@ -77,6 +82,11 @@
 					{
 						"components": [
 							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
 								"internalType": "address",
 								"name": "author",
 								"type": "address"
@@ -109,6 +119,24 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "likeTweet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					},
@@ -120,6 +148,11 @@
 				],
 				"name": "tweets",
 				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
 					{
 						"internalType": "address",
 						"name": "author",
@@ -142,6 +175,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "unLikeTweet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -173,11 +224,11 @@
 	},
 	"sources": {
 		"Learning-Solidity/contracts/Twitter.sol": {
-			"keccak256": "0xbb1ba8a8e46a10703e217863aa59136eef38d9e044fd6173fcc49ce6b3d8ba34",
+			"keccak256": "0x98e6f45ef77c2bb658b1179345a090835eb1f0fa2e8560e2cd4b8d835a19e87b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2daec99065ca39b159a269c3b498c463d416f5a7296e2fde7ac5ea67e0b51a64",
-				"dweb:/ipfs/QmP3W9sbVuqVQnwrvsnVxW3SBMX7wcTFyCmLavy1crULqg"
+				"bzz-raw://0802400acc40117d1266d60cf819b9c49af83c45f4d9b399edd9c0296ffb0dbf",
+				"dweb:/ipfs/QmVx81QsJp276auVVmmaZFFQSwYU49M6P9eicPVT8hCJm7"
 			]
 		}
 	},

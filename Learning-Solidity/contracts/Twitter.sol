@@ -9,6 +9,7 @@
 
     // definir el struct
     struct Tweet {
+        uint256 id;
         address author;
         string content;
         uint256 timestamp;
@@ -35,6 +36,7 @@
 
         // instanciar un Tweet
         Tweet memory newTweet = Tweet({
+            id: tweets[msg.sender].length ,
             author:msg.sender,
             content: _tweet,
             timestamp: block.timestamp,
@@ -43,6 +45,25 @@
 
         // añadir el tweet al array en la posicion del owner address
         tweets[msg.sender].push(newTweet);
+    }
+
+    // añadir likes a los tweet
+    function likeTweet(address author, uint256 id) external {
+
+        // comprobar si el tweet existe antes de agregar el like
+        require(tweets[author][id].id == id, "El tweet no existe");
+        tweets[author][id].likes++; // sumar un like al tweet
+    }
+
+    // quitar likes de los tweet
+    function unLikeTweet(address author, uint256 id) external {
+        // comprobar si el tweet existe antes de quitar el like
+        require(tweets[author][id].id == id, "Este tweet no existe");
+
+        // comprobar que el tweet no tenga 0 likes
+        require(tweets[author][id].likes > 0, "Este tweet no tiene likes");
+
+        tweets[author][id].likes--; // quitar like al tweet
     }
 
     // recuperar un tweet específico los de un address
