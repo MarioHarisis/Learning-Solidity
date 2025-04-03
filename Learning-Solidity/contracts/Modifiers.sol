@@ -7,6 +7,9 @@
 
     address public owner; // La dirección que despliega el contrato se establece como el propietario
     bool public paused;
+    
+    // estructura de datos llamada mapping, que es similar a un diccionario 
+    //en otros lenguajes
     mapping (address => uint) public balances;
 
     constructor() {

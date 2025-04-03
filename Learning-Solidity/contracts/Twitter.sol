@@ -7,7 +7,7 @@
 
     uint16 constant MAX_tWEET_LENGTH = 280;
 
-    // definir el struct
+    // definir el struct(como crear un objeto)
     struct Tweet {
         uint256 id;
         address author;

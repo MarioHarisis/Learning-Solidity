@@ -1,0 +1,25 @@
+# Archivos generados por Remix
+artifacts/
+cache/
+remix-tests/
+
+# Archivos de configuración sensibles
+.env
+.secret
+
+# Dependencias de Node.js
+node_modules/
+
+# Archivos de log y depuración
+*.log
+
+# Archivos específicos del entorno IDE
+*.swp
+*.swo
+.idea/
+.vscode/
+.DS_Store
+
+# Archivos de despliegue y configuraciones locales
+*.local
+*.bak
