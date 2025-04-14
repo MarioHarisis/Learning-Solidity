@@ -1,4 +1,5 @@
-import contractABI from "./abi.json";
+import Web3 from "web3";
+// Ahora puedes usar Web3 y MetaMask SDK como lo hacías en el código original.
 
 // 2️⃣ Set your smart contract address 👇
 const contractAddress = "";
@@ -8,7 +9,12 @@ let web3 = new Web3(window.ethereum);
 // HINT: https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#new-contract
 // let contract = YOUR CODE
 
+// agregar el listener del evento connectWallet
+document.getElementById("connectWalletBtn").addEventListener("click", connectWallet);
+
+// conectar con la wallet del usuario
 async function connectWallet() {
+  // HINT: https://docs.metamask.io/wallet/tutorials/javascript-dapp-simple/#1-set-up-the-project
   if (window.ethereum) {
     // comprueba si window.ethereum está disponible en el navegador.
 
@@ -17,7 +23,6 @@ async function connectWallet() {
       .request({ method: "eth_requestAccounts" })
       .catch((err) => {
         // Si ocurre un error al intentar obtener las cuentas, lo maneja este catch
-
         if (err.code === 4001) {
           // error es 4001, esto significa que el usuario ha rechazado la solicitud de conexión.
           // EIP-1193 userRejectedRequest error.
@@ -28,9 +33,10 @@ async function connectWallet() {
       });
     // si conectamos con acceso asignamos la primera cuenta que recibamos a 'account'
     const account = accounts[0];
-    showAccount.innerHTML = account;
+    document.getElementById("userAddress").innerHTML = account;
 
     setConnected(accounts[0]);
+    console.log(account);
   } else {
     console.error("No web3 provider detected");
     document.getElementById("connectMessage").innerText =

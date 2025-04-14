@@ -1,22 +1,19 @@
 {
-  "name": "twitter-dapp-exercise",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "name": "twitterdapp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
-  },
-  "dependencies": {
-    "parcel-bundler": "^1.6.1",
-    "twitter-dapp-exercise": "file:"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "typescript": "4.4.4"
+    "vite": "^6.2.6"
   },
-  "resolutions": {
-    "@babel/preset-env": "7.13.8"
-  },
-  "keywords": []
+  "dependencies": {
+    "@metamask/sdk": "^0.32.1",
+    "twitterdapp": "file:",
+    "web3": "^4.16.0"
+  }
 }
