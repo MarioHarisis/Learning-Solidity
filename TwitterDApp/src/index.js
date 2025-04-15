@@ -9,6 +9,15 @@ const contractAddress = "0x3d2d77c836549741a312d32E27Dd536a76556851";
 let web3 = new Web3(window.ethereum);
 // 3️⃣ connect to the contract using web3
 // HINT: https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#new-contract
+/*
+- web3.eth.Contract: Es el constructor de Web3.js que te permite crear una instancia de un contrato.
+
+- contractABI: Es la interfaz ABI (Application Binary Interface) del contrato. 
+  Describe las funciones, eventos y estructuras de datos del contrato.
+
+  - contractAddress: Es la dirección real en la blockchain donde está desplegado el contrato. 
+  Sin esta dirección, no se puede interactuar con el contrato.
+ */
 let contract = new web3.eth.Contract(contractABI, contractAddress);
 
 // agregar el listener del evento connectWallet
@@ -53,6 +62,16 @@ async function createTweet(content) {
     // 4️⃣ call the contract createTweet method in order to crete the actual TWEET
     // HINT: https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#methods-mymethod-send
     // use the "await" feature to wait for the function to finish execution
+    /*
+    con el objeto contract, accedemos a los métodos del contrato,
+    por lo tanto usamos ccreateTweet del smartcontract, le pasamos los argumentos 
+    correspondientes que hayamos definido en el mismo.
+
+    send() es un método de Web3.js que se usa para enviar transacciones a la blockchain.
+    Se está enviando la transacción para ejecutar la función createTweet en la blockchain.
+    El objeto { from: accounts[0] } le indica a Web3 que la transacción será enviada desde la dirección 
+    accounts[0](la primera cuenta con la que conecte)
+    */
     await contract.methods.createTweet(content).send({ from: accounts[0] });
 
     // 7️⃣ Uncomment the displayTweets function! PRETTY EASY 🔥
@@ -65,11 +84,11 @@ async function createTweet(content) {
 
 async function displayTweets(userAddress) {
   const tweetsContainer = document.getElementById("tweetsContainer");
-  const tempTweets = [];
+  let tempTweets = [];
   tweetsContainer.innerHTML = "";
   // 5️⃣ call the function getAllTweets from smart contract to get all the tweets
   // HINT: https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#methods-mymethod-call
-  // tempTweets = await YOUR CODE
+  tempTweets = await contract.methods.getAllTweets(userAddress).call();
 
   // we do this so we can sort the tweets  by timestamp
   const tweets = [...tempTweets];
@@ -80,7 +99,7 @@ async function displayTweets(userAddress) {
 
     const userIcon = document.createElement("img");
     userIcon.className = "user-icon";
-    userIcon.src = `https://avatars.dicebear.com/api/human/${tweets[i].author}.svg`;
+    userIcon.src = "./images/user.png";
     userIcon.alt = "User Icon";
 
     tweetElement.appendChild(userIcon);
@@ -149,6 +168,7 @@ function setConnected(address) {
   // 6️⃣ Call the displayTweets function with address as input
   // This is the function in the javascript code, not smart contract 😉
   // GOAL: display all tweets after connecting to metamask
+  displayTweets(address);
 }
 
 document.getElementById("connectWalletBtn").addEventListener("click", connectWallet);
